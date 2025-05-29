@@ -1,0 +1,46 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Show Data</title>
+  <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}">
+</head>
+<body>
+  
+  <div class=" container mt-3 ">
+    <div class=" d-flex justify-content-end">
+    <a class=" btn btn-outline-info mt-3 p-2" href="/"> Home </a>    
+  </div>
+
+  <div class=" justify-content-center mt-4">
+    <table class=" table table-striped">
+    <tr class="">
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Roll</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+
+
+    <tr class="">
+      {% for item in data %}
+      <td>{{ item.firstname }}</td>
+      <td>{{ item.lastname }}</td>
+      <td>{{ item.roll }}</td> 
+      <td><a href="{% url 'edit' item.id %}" class=" btn btn-dark" type="button">Edit</a></td>
+      <td><a href="{% url 'delete' item.id %}" class=" btn btn-dark" type="button">Delete</a></td>     
+    </tr>
+    {% endfor %}
+
+  </table>
+  </div>
+
+  </div>
+  <script src="{% static '/javascript/bootstrap.bundle.min.js'%}"></script>
+  <script src="{% static '/javascript/bootstrap.bundle.js' %}"></script>
+</body>
+</html>
